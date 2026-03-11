@@ -1,66 +1,50 @@
-body{
-  margin:0;
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg,#0f172a,#020617);
-  color:white;
-}
-
-/* MAIN DASHBOARD LAYOUT */
-
-.app{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:40px;
-
-  width:100%;
-  min-height:100vh;
-
-  padding:40px;
+*{
   box-sizing:border-box;
 }
 
-.card{
-  width:420px;
+body{
+  margin:0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top,#0f172a,#020617);
+  color:white;
 }
 
-.resultsCard{
-  width:600px;
-}
+/* PAGE CENTERING */
 
-/* LEFT PANEL */
-
-.card{
-  flex:1;
-  background:#1e293b;
-  padding:30px;
-  border-radius:14px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.6);
+.page{
   display:flex;
-  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:40px;
 }
 
-/* RIGHT PANEL */
+/* DASHBOARD GRID */
 
-.resultsCard{
-  flex:1.2;
+.dashboard{
+  display:grid;
+  grid-template-columns: 420px 620px;
+  gap:40px;
+}
+
+/* PANELS */
+
+.panel{
   background:#1e293b;
   padding:30px;
   border-radius:14px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.6);
-  overflow:auto;
+  box-shadow:0 20px 50px rgba(0,0,0,0.5);
 }
 
-/* TITLE */
+/* HEADINGS */
 
-.title{
-  font-size:26px;
-  font-weight:600;
-  text-align:center;
+.panel h2{
+  margin-top:0;
   margin-bottom:25px;
+  font-weight:600;
 }
 
-/* INPUTS */
+/* INPUT SECTION */
 
 .inputs{
   display:flex;
@@ -68,17 +52,17 @@ body{
   gap:14px;
 }
 
-.input{
+input{
   padding:14px;
   border-radius:8px;
   border:none;
   outline:none;
   background:#334155;
   color:white;
-  font-size:15px;
+  font-size:14px;
 }
 
-.input::placeholder{
+input::placeholder{
   color:#94a3b8;
 }
 
@@ -90,13 +74,17 @@ body{
   margin-top:20px;
 }
 
+button{
+  padding:12px 18px;
+  border:none;
+  border-radius:8px;
+  font-weight:500;
+  cursor:pointer;
+}
+
 .addBtn{
   background:#334155;
-  border:none;
-  padding:12px 18px;
-  border-radius:8px;
   color:white;
-  cursor:pointer;
 }
 
 .addBtn:hover{
@@ -105,12 +93,7 @@ body{
 
 .scanBtn{
   background:#22c55e;
-  border:none;
-  padding:12px 18px;
-  border-radius:8px;
   color:white;
-  font-weight:600;
-  cursor:pointer;
 }
 
 .scanBtn:hover{
@@ -122,7 +105,6 @@ body{
 table{
   width:100%;
   border-collapse:collapse;
-  margin-top:20px;
 }
 
 th{

@@ -18,7 +18,6 @@ function App() {
   };
 
   const scan = async () => {
-
     const filtered = targets.filter(t => t.trim() !== "");
 
     const res = await axios.post("http://localhost:5000/scan", {
@@ -29,70 +28,75 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="page">
 
-      <div className="card">
+      <div className="dashboard">
 
-        <h1 className="title">Web Server Fingerprinting Tool</h1>
+        {/* LEFT PANEL */}
+        <div className="panel inputPanel">
 
-        <div className="inputs">
+          <h2>Web Server Fingerprinting Tool</h2>
 
-          {targets.map((target, index) => (
-            <input
-              key={index}
-              type="text"
-              placeholder="Enter domain or IP address"
-              value={target}
-              onChange={(e) => handleChange(index, e.target.value)}
-              className="input"
-            />
-          ))}
+          <div className="inputs">
 
-        </div>
-
-        <div className="buttons">
-
-          <button className="addBtn" onClick={addInput}>
-            + Add Website
-          </button>
-
-          <button className="scanBtn" onClick={scan}>
-            Scan Targets
-          </button>
-
-        </div>
-
-      </div>
-
-      <div className="resultsCard">
-
-        <h2>Scan Results</h2>
-
-        <table>
-
-          <thead>
-            <tr>
-              <th>Target</th>
-              <th>Protocol</th>
-              <th>Server</th>
-              <th>Version</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            {results.map((r, i) => (
-              <tr key={i}>
-                <td>{r.target}</td>
-                <td>{r.protocol}</td>
-                <td>{r.server}</td>
-                <td>{r.version}</td>
-              </tr>
+            {targets.map((target, index) => (
+              <input
+                key={index}
+                type="text"
+                placeholder="Enter domain or IP"
+                value={target}
+                onChange={(e) => handleChange(index, e.target.value)}
+              />
             ))}
 
-          </tbody>
+          </div>
 
-        </table>
+          <div className="buttons">
+
+            <button className="addBtn" onClick={addInput}>
+              + Add Website
+            </button>
+
+            <button className="scanBtn" onClick={scan}>
+              Scan Targets
+            </button>
+
+          </div>
+
+        </div>
+
+        {/* RIGHT PANEL */}
+        <div className="panel resultsPanel">
+
+          <h2>Scan Results</h2>
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Target</th>
+                <th>Protocol</th>
+                <th>Server</th>
+                <th>Version</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              {results.map((r,i)=>(
+                <tr key={i}>
+                  <td>{r.target}</td>
+                  <td>{r.protocol}</td>
+                  <td>{r.server}</td>
+                  <td>{r.version}</td>
+                </tr>
+              ))}
+
+            </tbody>
+
+          </table>
+
+        </div>
 
       </div>
 
